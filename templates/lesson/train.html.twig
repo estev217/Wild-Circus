@@ -1,8 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-
-
+    <div class="row justify-content-around mt-5 mx-0">
+        {% for lesson in lessons %}
+            <div class="card mb-1" style="width: 20rem;">
+                <img class="card-img-top" src="{{ lesson.image }}" alt="{{ lesson.name }}">
+                <div class="card-body">
+                    <p class="lesson-title text-center border-bottom">{{ lesson.name }}</p>
+                    <p class="card-text">{{ lesson.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
 
