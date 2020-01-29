@@ -1,0 +1,46 @@
+{% block header %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('app_index') }}">Wild Circus School<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Le concept</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Dressage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Jonglage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Clown</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Acrobaties</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav align-content-end">
+                {% if app.user %}
+                    <li class="nav-link text-black-50">
+                        {{ app.user.username }}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_profile') }}">Mon Compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}"> Se déconnecter</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}"> Se connecter</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <span class="navbar-text">
+        </span>
+        </div>
+    </nav>
+{% endblock %}
+

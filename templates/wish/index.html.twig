@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wish index{% endblock %}
+
+{% block body %}
+    <h1>Wish index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Number</th>
+                <th>Validation</th>
+                <th>Visibility</th>
+                <th>Estimation</th>
+                <th>Price</th>
+                <th>Message</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for wish in wishes %}
+            <tr>
+                <td>{{ wish.id }}</td>
+                <td>{{ wish.number }}</td>
+                <td>{{ wish.validation ? 'Yes' : 'No' }}</td>
+                <td>{{ wish.visibility ? 'Yes' : 'No' }}</td>
+                <td>{{ wish.estimation ? 'Yes' : 'No' }}</td>
+                <td>{{ wish.price }}</td>
+                <td>{{ wish.message }}</td>
+                <td>
+                    <a href="{{ path('wish_show', {'id': wish.id}) }}">show</a>
+                    <a href="{{ path('wish_edit', {'id': wish.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('wish_new') }}">Create new</a>
+{% endblock %}
