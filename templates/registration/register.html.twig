@@ -6,19 +6,36 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-3"></div>
-            <form method="post" class="col-6 mt-5 d-flex flex-column justify-content-center">
+            <form method="post" class="col-lg-6 col-sm-12 mt-5 d-flex flex-column justify-content-center">
 
-                <h1 class="h3 mb-5 font-weight-normal text-white text-center">Formulaire d'inscription</h1>
-                <div class="text-white">
+                <h1 class="mb-5 font-weight-normal text-white text-center">Formulaire d'inscription</h1>
+                <div class="text-white d-flex flex-column">
                     {{ form_start(registrationForm) }}
-                    {{ form_row(registrationForm.firstname) }}
-                    {{ form_row(registrationForm.lastname) }}
-                    {{ form_row(registrationForm.username) }}
-                    {{ form_row(registrationForm.email) }}
-                    {{ form_row(registrationForm.plainPassword) }}
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Nom</p>
+                        {{ form_row(registrationForm.lastname) }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Prénom</p>
+                        {{ form_row(registrationForm.firstname) }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Pseudo</p>
+                        {{ form_row(registrationForm.username) }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Email</p>
+                        {{ form_row(registrationForm.email) }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Mot de passe</p>
+                        {{ form_row(registrationForm.plainPassword) }}
+                    </div>
+                    <div class="text-center mt-3">
                     {{ form_row(registrationForm.agreeTerms) }}
+                    </div>
                 </div>
-                <button class="mt-5 btn btn-lg btn-outline-secondary">Je m'inscris</button>
+                <button class="mt-5 mb-2 btn btn-lg btn-outline-light">Je m'inscris</button>
                 {{ form_end(registrationForm) }}
 
             </form>
