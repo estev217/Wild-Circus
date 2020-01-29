@@ -1,4 +1,19 @@
-
+@media screen and (max-width: 991px){
+  .desktop {
+    display: none;
+  }
+  .navbar-toggler {
+    background-color: #d04300;
+  }
+  .appname {
+    display: none;
+  }
+}
+@media screen and (min-width: 992px){
+  .mobile {
+    display: none;
+  }
+}
 
 
 
