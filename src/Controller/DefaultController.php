@@ -41,4 +41,18 @@ Class DefaultController extends AbstractController
             'users' => $users,
         ]);
     }
+
+    /**
+     * @Route("/purpose", name="purpose")
+     * @param ImageRepository $imageRepository
+     * @return Response
+     */
+    public function purpose(ImageRepository $imageRepository) :Response
+    {
+        $images = $imageRepository->findAll();
+
+        return $this->render('purpose.html.twig', [
+            'images' => $images,
+        ]);
+    }
 }

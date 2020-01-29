@@ -16,12 +16,38 @@ use Symfony\Component\Routing\Annotation\Route;
 class LessonController extends AbstractController
 {
     /**
-     * @Route("/", name="lesson_index", methods={"GET"})
+     * @Route("/trainings", name="lesson_train", methods={"GET"})
+     * @param LessonRepository $lessonRepository
+     * @return Response
      */
-    public function index(LessonRepository $lessonRepository): Response
+    public function train(LessonRepository $lessonRepository): Response
     {
-        return $this->render('lesson/index.html.twig', [
-            'lessons' => $lessonRepository->findAll(),
+        return $this->render('lesson/train.html.twig', [
+            'lessons' => $lessonRepository->findBy(['category' => 'train']),
+        ]);
+    }
+
+    /**
+     * @Route("/clownery", name="lesson_clown", methods={"GET"})
+     * @param LessonRepository $lessonRepository
+     * @return Response
+     */
+    public function clown(LessonRepository $lessonRepository): Response
+    {
+        return $this->render('lesson/clown.html.twig', [
+            'lessons' => $lessonRepository->findBy(['category' => 'clownery']),
+        ]);
+    }
+
+    /**
+     * @Route("/acrobatics", name="lesson_acrobatic", methods={"GET"})
+     * @param LessonRepository $lessonRepository
+     * @return Response
+     */
+    public function acrobatic(LessonRepository $lessonRepository): Response
+    {
+        return $this->render('lesson/acrobatic.html.twig', [
+            'lessons' => $lessonRepository->findBy(['category' => 'acrobatics']),
         ]);
     }
 
@@ -91,4 +117,5 @@ class LessonController extends AbstractController
 
         return $this->redirectToRoute('lesson_index');
     }
+
 }
