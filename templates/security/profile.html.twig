@@ -6,24 +6,56 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-3"></div>
-            <div class="col-6 mt-5 d-flex flex-column justify-content-center card">
-                <div class="text-center border-bottom">
-                    <h1>Mes informations personnelles</h1>
+            <form method="post" class="col-lg-6 col-sm-12 mt-5 d-flex flex-column justify-content-center border">
+
+                <h1 class="mb-3 font-weight-normal text-white text-center">Mes informations personnelles</h1>
+                <div class="text-white d-flex flex-column">
+
+                    <div class="text-center">
+                        <p class="text-center mb-0">Nom</p>
+                        {{ app.user.lastname }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Prénom</p>
+                        {{ app.user.firstname }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Pseudo</p>
+                        {{ app.user.username }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Email</p>
+                        {{ app.user.email }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Téléphone</p>
+                        {{ app.user.telephone }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Adresse</p>
+                        {{ app.user.address }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Ville</p>
+                        {{ app.user.city }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Code Postal</p>
+                        {{ app.user.code }}
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-center mb-0">Région</p>
+                        {{ app.user.region }}
+                    </div>
+                    <div class="text-center">
+                        <a href="{{ path('app_profile') }}">
+                            <button class="mt-5 mb-2 btn btn-lg btn-outline-light">
+                                Mettre à jour
+                            </button>
+                        </a>
+                    </div>
                 </div>
-                <div class="text-center mt-3">
-                    <p>Mon mail : {{ app.user.email }}</p>
-                </div>
-                <div class="text-center">
-                    <p>Mes roles :</p>
-                </div>
-                <div class="text-center">
-                    <ul>
-                        {% for role in app.user.roles %}
-                            <li class="ml-5">{{ role }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+            </form>
             <div class="col-3"></div>
         </div>
     </div>

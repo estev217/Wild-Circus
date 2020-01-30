@@ -1,38 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-        <div class="view">
-            <div class="carouselBlock">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block vw-50" src="{{ images[0].url }}" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block vw-50" src="{{ images[1].url }}" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block vw-50" src="{{ images[2].url }}" alt="Third slide">
+    <div class="view">
+        <div class="carouselBlock">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block vw-50" src="{{ images[0].url }}" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="text-white carousel-text">Domptez des lions !</h5>
+                            <p class="text-white carousel-text">Apprenez à dompter le roi des animaux.</p>
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="carousel-item">
+                        <img class="d-block vw-50" src="{{ images[1].url }}" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="text-white carousel-text">Jouez avec des clowns !</h5>
+                            <p class="text-white carousel-text">Cascade, magie, jonglerie, faites rire le public.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block vw-50" src="{{ images[2].url }}" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="text-white carousel-text">Dressez des éléphants !</h5>
+                            <p class="text-white carousel-text">Prenez des cours avec de véritables dresseurs.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="summary">
-                <div>
-                    <h1>Wild Circus School</h1>
-                    <p>Bienvenue à la Wild Circus School !</p>
-                </div>
-            </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+             </div>
         </div>
+        <div class="summary">
+                <h1 class="text-white">Wild Circus School</h1>
+                <p class="entry-text">Vous avez toujours rêvé de faire du cirque?</p>
+                <p class="entry-text">Vous souhaitez apprendre avec des professionnels?</p>
+                <p class="entry-text">Wild Circus School va vous mettre en contact avec eux!</p>
+        </div>
+    </div>
 
 {% endblock %}
 
