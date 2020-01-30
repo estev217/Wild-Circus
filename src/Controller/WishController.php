@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Wish;
+use App\Form\MessageType;
 use App\Form\WishType;
 use App\Repository\UserRepository;
 use App\Repository\WishRepository;
@@ -71,7 +72,7 @@ class WishController extends AbstractController
      */
     public function edit(Request $request, Wish $wish): Response
     {
-        $form = $this->createForm(WishType::class, $wish);
+        $form = $this->createForm(MessageType::class, $wish);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

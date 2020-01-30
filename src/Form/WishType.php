@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Entity\Wish;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,16 +18,6 @@ class WishType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('number', IntegerType::class, [
-                'label' => 'Choisissez le nombre de participants',
-                'attr' => [
-                    'min' => 1,
-                ]
-            ])
-            /*->add('visibility')
-            ->add('estimation')*/
-            /*->add('price')
-            ->add('message')*/
             ->add('lesson', EntityType::class, [
                 'class' => Lesson::class,
                 'label' => 'Choisissez un cours',
@@ -35,7 +26,15 @@ class WishType extends AbstractType
                 'choice_label' => function (Lesson $lesson) {
                     return $lesson->getName();
                 }])
-            ->add('validation')
+            ->add('number', IntegerType::class, [
+                'label' => 'Choisissez le nombre de participants',
+                'attr' => [
+                    'min' => 1,
+                ]
+            ])
+            ->add('validation', CheckboxType::class, [
+                'label' => 'J\'accepte de recevoir des messages de la part des cirques concernant cette demande',
+            ])
         ;
     }
 

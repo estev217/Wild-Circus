@@ -3,43 +3,48 @@
 {% block title %}Wish index{% endblock %}
 
 {% block body %}
-    <h1>Wish index</h1>
+    <div class="container">
+        <div class="row">
+            <div class="collab-list">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Liste des demandes des utilisateurs</h3>
+                    </div>
+                    <div class="card-body pt-0 px-0">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col" class="text-uppercase text-center">Prestation</th>
+                                <th scope="col" class="text-uppercase text-center">Nombre de participants</th>
+                                <th scope="col" class="text-uppercase text-center">Région</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for wish in wishes %}
+                                {% if not wish.message %}
+                                <tr>
+                                    <td class="text-center align-middle">{{ wish.lesson.name }}</td>
+                                    <td class="text-center align-middle">{{ wish.number }}</td>
+                                    <td class="text-center align-middle">{{ wish.user.region ? wish.user.region : '' }}</td>
+                                    <td  class="text-center align-middle">
+                                        <a href="{{ path('wish_edit', {'id': wish.id}) }}" title="Répondre">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="3">Aucune demande pour le moment</td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Number</th>
-                <th>Validation</th>
-                <th>Visibility</th>
-                <th>Estimation</th>
-                <th>Price</th>
-                <th>Message</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for wish in wishes %}
-            <tr>
-                <td>{{ wish.id }}</td>
-                <td>{{ wish.number }}</td>
-                <td>{{ wish.validation ? 'Yes' : 'No' }}</td>
-                <td>{{ wish.visibility ? 'Yes' : 'No' }}</td>
-                <td>{{ wish.estimation ? 'Yes' : 'No' }}</td>
-                <td>{{ wish.price }}</td>
-                <td>{{ wish.message }}</td>
-                <td>
-                    <a href="{{ path('wish_show', {'id': wish.id}) }}">show</a>
-                    <a href="{{ path('wish_edit', {'id': wish.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-   {# <a href="{{ path('wish_new', {'id': wish.id}) }}">Create new</a>#}
+        </div>
+    </div>
 {% endblock %}

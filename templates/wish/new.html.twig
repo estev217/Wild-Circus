@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Wish{% endblock %}
+{% block title %}Faites votre demande{% endblock %}
 
 {% block body %}
-    <h1>Create new Wish</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+            <form method="post" class="pb-3 px-5 col-lg-6 col-sm-12 mt-5 d-flex flex-column justify-content-center profile-card">
 
-    {{ include('wish/_form.html.twig') }}
+                <h1 class="mb-3 mt-3 font-weight-normal text-dark text-center">Faites votre demande !</h1>
+                <div class="text-white d-flex flex-column">
 
-    <a href="{{ path('wish_index') }}">back to list</a>
+                    {{ include('wish/_form.html.twig', {'button_label': 'Envoyer votre demande'}) }}
+
+                </div>
+            </form>
+            <div class="col-3"></div>
+        </div>
+    </div>
 {% endblock %}
