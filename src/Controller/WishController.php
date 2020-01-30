@@ -10,6 +10,7 @@ use App\Repository\UserRepository;
 use App\Repository\WishRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -98,6 +99,8 @@ class WishController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('wish_index');
+        return new RedirectResponse($this->generateUrl('app_profile', [
+            'user' => $wish->getUser()->getId(),
+            ]));
     }
 }

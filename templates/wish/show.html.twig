@@ -1,27 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voir l'offre{% endblock %}
+{% block title %}Détail de l'offre{% endblock %}
 
 {% block body %}
-{#
-                <th>Price</th>
-                <td>{{ wish.price }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ wish.message }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('wish_index') }}">back to list</a>
-
-    <a href="{{ path('wish_edit', {'id': wish.id}) }}">edit</a>
-
-    {{ include('wish/_delete_form.html.twig') }}
-#}
-
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-3"></div>
@@ -64,6 +45,4 @@
             <div class="col-3"></div>
         </div>
     </div>
-
-
 {% endblock %}
