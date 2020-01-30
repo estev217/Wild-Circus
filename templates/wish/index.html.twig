@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Wish index{% endblock %}
+{% block title %}Liste des demandes{% endblock %}
 
 {% block body %}
     <div class="container">
-        <div class="row">
-            <div class="collab-list">
-                <div class="card">
+        <div class="row justify-content-center mt-5 mb-5">
+                <div class="profile-card">
                     <div class="card-header text-center">
                         <h3>Liste des demandes des utilisateurs</h3>
                     </div>
@@ -14,9 +13,9 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col" class="text-uppercase text-center">Prestation</th>
-                                <th scope="col" class="text-uppercase text-center">Nombre de participants</th>
-                                <th scope="col" class="text-uppercase text-center">Région</th>
+                                <th scope="col" class="text-uppercase text-white text-center">Prestation</th>
+                                <th scope="col" class="text-uppercase text-white text-center">Nombre de participants</th>
+                                <th scope="col" class="text-uppercase text-white text-center">Région</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -33,18 +32,12 @@
                                         </a>
                                     </td>
                                 </tr>
-                                {% else %}
-                                <tr>
-                                    <td colspan="3">Aucune demande pour le moment</td>
-                                </tr>
                                 {% endif %}
                             {% endfor %}
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
-
         </div>
     </div>
 {% endblock %}

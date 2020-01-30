@@ -10,14 +10,20 @@
 
                 <h1 class="mb-3 mt-3 font-weight-normal text-dark text-center">Faites une offre et réalisez ce rêve !</h1>
                 <div class="text-white d-flex flex-column">
-                    <div class="text-center mt-3">
+                    <div class="text-center mt-3 mb-3">
                         <p class="text-center text-dark mb-0">Prestation</p>
                         <p class="text-center mb-0">{{ wish.lesson.name }}</p>
                     </div>
-                    <div class="text-center mt-3 mb-3">
+                    <div class="text-center mt-1 mb-3">
                         <p class="text-center text-dark mb-0">Nombre de participant(s)</p>
                         <p class="text-center mb-0">{{ wish.number }}</p>
                     </div>
+                    {% if wish.user.city %}
+                    <div class="text-center mt-1 mb-3">
+                        <p class="text-center text-dark mb-0">Ville</p>
+                        <p class="text-center mb-0">{{ wish.user.city }}</p>
+                    </div>
+                    {% endif %}
 
                     {{ include('wish/_form.html.twig', {'button_label': 'Envoyer l\'offre'}) }}
 
