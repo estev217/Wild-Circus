@@ -58,7 +58,7 @@
             </form>
             <div class="col-lg-8 col-md-11 col-sm-11 mt-5 mb-2 mr-0 d-flex flex-column justify-content-around">
                 <div class="border profile-card mb-5">
-                    <h1 class="text-center my-3">Mes rêves</h1>
+                    <h1 class="text-center my-3">Mes demandes</h1>
                     <div class="d-flex flex-row wishes">
                     {% for wish in wishes %}
                         {% if not wish.message %}
@@ -79,17 +79,19 @@
                     </div>
                 </div>
                 <div class="border profile-card">
-                    <h1 class="text-center my-3">Mes offres</h1>
+                    <h1 class="text-center my-3">Mes offres reçues</h1>
                     <div class="d-flex flex-row wishes">
                     {% for wish in wishes %}
                         {% if wish.message %}
                             <div class="mx-2 my-2 px-4 py-2 d-flex flex-column justify-content-between text-center border">
                                 <div>
                                     <h5>{{ wish.lesson.name }}</h5>
+                                    <p>Pour {{ wish.number }} personne(s)</p>
                                 </div>
                                 <div>
-                                    <p>Nombre de participant(s)</p>
-                                    <p>{{ wish.number }}</p>
+                                    <a href="{{ path('wish_show', {'id': wish.id}) }}" title="Voir l'offre">
+                                        <i class="fas fa-envelope fa-2x"></i>
+                                    </a>
                                 </div>
                             </div>
                         {% endif %}

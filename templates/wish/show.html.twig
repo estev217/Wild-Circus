@@ -3,7 +3,7 @@
 {% block title %}Voir l'offre{% endblock %}
 
 {% block body %}
-
+{#
                 <th>Price</th>
                 <td>{{ wish.price }}</td>
             </tr>
@@ -19,4 +19,51 @@
     <a href="{{ path('wish_edit', {'id': wish.id}) }}">edit</a>
 
     {{ include('wish/_delete_form.html.twig') }}
+#}
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+            <form method="post" class="col-lg-6 col-sm-12 mt-5 d-flex flex-column justify-content-center profile-card">
+
+                <h1 class="mb-3 mt-3 font-weight-normal text-dark text-center">Détail de l'offre</h1>
+                <div class="text-white d-flex flex-column">
+                    <div class="text-center mt-3 mb-3">
+                        <p class="text-center text-dark mb-0">Prestation</p>
+                        <p class="text-center mb-0">{{ wish.lesson.name }}</p>
+                    </div>
+                    <div class="text-center mt-1 mb-3">
+                        <p class="text-center text-dark mb-0">Nombre de participant(s)</p>
+                        <p class="text-center mb-0">{{ wish.number }}</p>
+                    </div>
+                    {% if wish.user.city %}
+                        <div class="text-center mt-1 mb-3">
+                            <p class="text-center text-dark mb-0">Ville</p>
+                            <p class="text-center mb-0">{{ wish.user.city }}</p>
+                        </div>
+                    {% endif %}
+                    {% if wish.user.region %}
+                        <div class="text-center mt-1 mb-3">
+                            <p class="text-center text-dark mb-0">Région</p>
+                            <p class="text-center mb-0">{{ wish.user.region }}</p>
+                        </div>
+                    {% endif %}
+                        <div class="text-center mt-1 mb-3">
+                            <p class="text-center text-dark mb-0">Offre</p>
+                            <p class="text-center mb-0">{{ wish.price }} €</p>
+                        </div>
+                        <div class="text-center mt-1 mb-3">
+                            <p class="text-center text-dark mb-0">Message</p>
+                            <p class="text-center mb-0">{{ wish.message }}</p>
+                        </div>
+                    <a href="" class="text-center text-white mt-3 mb-3">Retour à mon profil</a>
+                    {{ include('wish/_delete_form.html.twig') }}
+                </div>
+            </form>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+
 {% endblock %}
