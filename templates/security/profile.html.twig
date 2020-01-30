@@ -58,13 +58,26 @@
             </form>
             <div class="col-lg-8 col-md-11 col-sm-11 mt-5 mb-2 mr-0 d-flex flex-column justify-content-around">
                 <div class="border profile-card">
+                    <h1 class="text-center my-3">Mes rêves</h1>
+                    <div class="d-flex flex-row wishes">
                     {% for wish in wishes %}
-                <p>{{ wish.lesson.name }}</p>
+                        {% if not wish.message %}
+                            <div class="mx-2 my-2 px-4 py-4 text-center border">
+                                <p>{{ wish.lesson.name }}</p>
+                                <p>{{ wish.number }}</p>
+                            </div>
+                        {% endif %}
                     {% endfor %}
-                <p></p>
+                    </div>
                 </div>
                 <div class="border profile-card">
-                <p></p>
+                    {% for wish in wishes %}
+                        {% if wish.message %}
+                            <div>
+                                <h1>{{ wish.lesson.name }}</h1>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
