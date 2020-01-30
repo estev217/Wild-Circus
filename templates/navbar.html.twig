@@ -23,7 +23,7 @@
                 </li>
                 {%  if app.user %}
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ path('wish_index') }}">Réservation</a>
+                        <a class="nav-link text-dark" href="{{ path('wish_new', {'id' : app.user.id}) }}">Réalisez votre rêve</a>
                     </li>
                 {% endif %}
             </ul>
@@ -33,7 +33,7 @@
                         Bonjour {{ app.user.firstname }}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ path('app_profile') }}">Mon Compte</a>
+                        <a class="nav-link text-dark" href="{{ path('app_profile', {'user': app.user.id}) }}">Mon Compte</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="{{ path('app_logout') }}"> Se déconnecter</a>

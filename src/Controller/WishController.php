@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Wish;
 use App\Form\WishType;
+use App\Repository\UserRepository;
 use App\Repository\WishRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,9 +29,11 @@ class WishController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="wish_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="wish_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, User $user): Response
     {
         $wish = new Wish();
         $form = $this->createForm(WishType::class, $wish);
@@ -36,6 +41,9 @@ class WishController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $wish->setUser($user);
+            $wish->setVisibility(false);
+            $wish->setEstimation(false);
             $entityManager->persist($wish);
             $entityManager->flush();
 

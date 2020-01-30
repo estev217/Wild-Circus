@@ -5,50 +5,50 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3"></div>
-            <form method="post" class="col-lg-6 col-sm-12 mt-5 d-flex flex-column justify-content-center border">
+            <form method="post" class="col-lg-3 col-md-11 col-sm-12 mt-5 ml-5 mr-2
+            d-flex flex-column justify-content-center border profile-card">
 
-                <h1 class="mb-3 font-weight-normal text-white text-center">Mes informations personnelles</h1>
+                <h1 class="mb-3 font-weight-normal text-dark text-center">Mes informations personnelles</h1>
                 <div class="text-white d-flex flex-column">
 
                     <div class="text-center">
-                        <p class="text-center mb-0">Nom</p>
+                        <p class="text-center text-dark mb-0">Nom</p>
                         {{ app.user.lastname }}
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-center mb-0">Prénom</p>
+                        <p class="text-center text-dark mb-0">Prénom</p>
                         {{ app.user.firstname }}
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-center mb-0">Pseudo</p>
+                        <p class="text-center text-dark mb-0">Pseudo</p>
                         {{ app.user.username }}
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-center mb-0">Email</p>
+                        <p class="text-center text-dark mb-0">Email</p>
                         {{ app.user.email }}
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-center mb-0">Téléphone</p>
+                        <p class="text-center text-dark mb-0">Téléphone</p>
                         {{ app.user.telephone }}
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-center mb-0">Adresse</p>
+                        <p class="text-center text-dark mb-0">Adresse</p>
                         {{ app.user.address }}
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-center mb-0">Ville</p>
+                        <p class="text-center text-dark mb-0">Ville</p>
                         {{ app.user.city }}
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-center mb-0">Code Postal</p>
+                        <p class="text-center text-dark mb-0">Code Postal</p>
                         {{ app.user.code }}
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-center mb-0">Région</p>
+                        <p class="text-center text-dark mb-0">Région</p>
                         {{ app.user.region }}
                     </div>
                     <div class="text-center">
-                        <a href="{{ path('app_profile') }}">
+                        <a href="{{ path('app_profile', {'user': app.user.id}) }}">
                             <button class="mt-5 mb-2 btn btn-lg btn-outline-light">
                                 Mettre à jour
                             </button>
@@ -56,7 +56,17 @@
                     </div>
                 </div>
             </form>
-            <div class="col-3"></div>
+            <div class="col-lg-8 col-md-11 col-sm-11 mt-5 mb-2 mr-0 d-flex flex-column justify-content-around">
+                <div class="border profile-card">
+                    {% for wish in wishes %}
+                <p>{{ wish.lesson.name }}</p>
+                    {% endfor %}
+                <p></p>
+                </div>
+                <div class="border profile-card">
+                <p></p>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

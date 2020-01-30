@@ -82,6 +82,16 @@ class User implements UserInterface
      */
     private $username;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nickname;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isCircus;
+
     public function __construct()
     {
         $this->wishes = new ArrayCollection();
@@ -283,6 +293,30 @@ class User implements UserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(?string $nickname): self
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    public function getIsCircus(): ?bool
+    {
+        return $this->isCircus;
+    }
+
+    public function setIsCircus(?bool $isCircus): self
+    {
+        $this->isCircus = $isCircus;
 
         return $this;
     }

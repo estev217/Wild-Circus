@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ImageRepository;
 use App\Repository\UserRepository;
+use App\Repository\WishRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,20 +26,6 @@ Class DefaultController extends AbstractController
         return $this->render('home.html.twig', [
             'users' => $users,
             'images' => $images,
-        ]);
-    }
-
-    /**
-     * @Route("/profile", name="app_profile")
-     * @param UserRepository $userRepository
-     * @return Response
-     */
-    public function profile(UserRepository $userRepository) :Response
-    {
-        $users = $userRepository->findAll();
-
-        return $this->render('security/profile.html.twig', [
-            'users' => $users,
         ]);
     }
 

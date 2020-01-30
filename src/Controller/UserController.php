@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Repository\WishRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,5 +91,19 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('user_index');
+    }
+
+    /**
+     * @Route("/my-profile/{user}", name="app_profile", methods={"GET","POST"})
+     * @param WishRepository $wishRepository
+     * @param User $user
+     * @return Response
+     */
+    public function myWish(User $user, WishRepository $wishRepository): Response
+    {
+
+        return $this->render('security/profile.html.twig', [
+            'wishes' => $wishRepository->findBy(['user' => $user->getId()])
+        ]);
     }
 }

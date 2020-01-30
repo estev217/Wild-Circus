@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Lesson;
+use App\Entity\Wish;
 use App\Form\LessonType;
+use App\Form\LionType;
+use App\Form\WishType;
 use App\Repository\LessonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,23 +56,25 @@ class LessonController extends AbstractController
 
     /**
      * @Route("/new", name="lesson_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
-        $lesson = new Lesson();
-        $form = $this->createForm(LessonType::class, $lesson);
+        $wish = new Wish();
+        $form = $this->createForm(WishType::class, $wish);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($lesson);
+            $entityManager->persist($wish);
             $entityManager->flush();
 
-            return $this->redirectToRoute('lesson_index');
+            return $this->redirectToRoute('wish_index');
         }
 
         return $this->render('lesson/new.html.twig', [
-            'lesson' => $lesson,
+            'wish' => $wish,
             'form' => $form->createView(),
         ]);
     }
