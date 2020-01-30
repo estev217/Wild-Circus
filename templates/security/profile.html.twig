@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container-fluid">
         <div class="row">
-            <form method="post" class="col-lg-3 col-md-11 col-sm-12 mt-5 ml-5 mr-2
+            <form method="post" class="col-lg-3 col-md-11 col-sm-12 mt-5 ml-5 mr-2 mb-5
             d-flex flex-column justify-content-center border profile-card">
 
                 <h1 class="mb-3 font-weight-normal text-dark text-center">Mes informations personnelles</h1>
@@ -57,27 +57,45 @@
                 </div>
             </form>
             <div class="col-lg-8 col-md-11 col-sm-11 mt-5 mb-2 mr-0 d-flex flex-column justify-content-around">
-                <div class="border profile-card">
+                <div class="border profile-card mb-5">
                     <h1 class="text-center my-3">Mes rêves</h1>
                     <div class="d-flex flex-row wishes">
                     {% for wish in wishes %}
                         {% if not wish.message %}
-                            <div class="mx-2 my-2 px-4 py-4 text-center border">
-                                <p>{{ wish.lesson.name }}</p>
-                                <p>{{ wish.number }}</p>
+                            <div class="mx-2 my-2 px-4 py-2 d-flex flex-column justify-content-between text-center border">
+                                <div>
+                                    <h5>{{ wish.lesson.name }}</h5>
+                                </div>
+                                <div>
+                                    <p>Nombre de participant(s)</p>
+                                    <p>{{ wish.number }}</p>
+                                </div>
                             </div>
                         {% endif %}
                     {% endfor %}
+                        {%  if not wishes %}
+                            <div class="ml-1">Vous n'avez pas choisi de rêve à réaliser.</div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="border profile-card">
+                    <h1 class="text-center my-3">Mes offres</h1>
+                    <div class="d-flex flex-row wishes">
                     {% for wish in wishes %}
                         {% if wish.message %}
-                            <div>
-                                <h1>{{ wish.lesson.name }}</h1>
+                            <div class="mx-2 my-2 px-4 py-2 d-flex flex-column justify-content-between text-center border">
+                                <div>
+                                    <h5>{{ wish.lesson.name }}</h5>
+                                </div>
+                                <div>
+                                    <p>Nombre de participant(s)</p>
+                                    <p>{{ wish.number }}</p>
+                                </div>
                             </div>
                         {% endif %}
                     {% endfor %}
+
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Doctrine\DBAL\Types\BooleanType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,12 +33,20 @@ class RegistrationFormType extends AbstractType
             ->add('username', TextType::class, [
                 'label' => " ",
             ])
+            ->add('is_circus', ChoiceType::class, [
+                'label' => ' ',
+                'placeholder' => ' ',
+                'choices'  => [
+                    'Oui' => true,
+                    'Non' => false,
+                ],
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => "Accepter les conditions d'utilisation",
+                'label' => "J'accepte les conditions d'utilisation du site",
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter les conditions d\'utilisation.',
                     ]),
                 ],
             ])
