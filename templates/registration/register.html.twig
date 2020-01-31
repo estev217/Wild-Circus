@@ -6,10 +6,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-3"></div>
-            <form method="post" class="col-lg-6 col-sm-12 mt-3 d-flex flex-column justify-content-center">
+            <form method="post" class="col-lg-6 col-sm-12 mt-5 d-flex flex-column justify-content-center">
 
                 <h1 class="mb-3 font-weight-normal text-white text-center">Formulaire d'inscription</h1>
-                <div class="text-white d-flex flex-column">
+                <div class="text-dark d-flex flex-column">
                     {{ form_start(registrationForm) }}
                     <div class="text-center mt-3">
                         <p class="text-center mb-0">Nom</p>
@@ -21,18 +21,21 @@
                     </div>
                     <div class="text-center mt-3">
                         <p class="text-center mb-0">Pseudo</p>
-                        {{ form_row(registrationForm.username) }}
+                        {{ form_row(registrationForm.nickname) }}
                     </div>
                     <div class="text-center mt-3">
                         <p class="text-center mb-0">Email</p>
                         {{ form_row(registrationForm.email) }}
                     </div>
-                    <div class="text-center mt-3">
+                    <div class="text-center mt-5">
                         <p class="text-center mb-0">Représentez-vous un cirque ?</p>
                         {{ form_row(registrationForm.is_circus) }}
                     </div>
                     <div class="text-center mt-3">
-                        <p class="text-center mb-0">Mot de passe</p>
+                        <p class="text-center mb-0">Nom du cirque</p>
+                        {{ form_row(registrationForm.circus_name) }}
+                    </div>
+                    <div class="text-center mt-5">
                         {{ form_row(registrationForm.plainPassword) }}
                     </div>
                     <div class="text-center mt-3">

@@ -92,6 +92,11 @@ class User implements UserInterface
      */
     private $isCircus;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $circusName;
+
     public function __construct()
     {
         $this->wishes = new ArrayCollection();
@@ -317,6 +322,18 @@ class User implements UserInterface
     public function setIsCircus(?bool $isCircus): self
     {
         $this->isCircus = $isCircus;
+
+        return $this;
+    }
+
+    public function getCircusName(): ?string
+    {
+        return $this->circusName;
+    }
+
+    public function setCircusName(?string $circusName): self
+    {
+        $this->circusName = $circusName;
 
         return $this;
     }

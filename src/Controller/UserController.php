@@ -106,4 +106,18 @@ class UserController extends AbstractController
             'wishes' => $wishRepository->findBy(['user' => $user->getId()])
         ]);
     }
+
+    /**
+     * @Route("/circus/{user}", name="circus_profile", methods={"GET","POST"})
+     * @param WishRepository $wishRepository
+     * @param User $user
+     * @return Response
+     */
+    public function myprofile(User $user, WishRepository $wishRepository): Response
+    {
+
+        return $this->render('security/circus_profile.html.twig', [
+            'wishes' => $wishRepository->findBy(['user' => $user->getId()])
+        ]);
+    }
 }

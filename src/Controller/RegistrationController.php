@@ -33,6 +33,7 @@ class RegistrationController extends AbstractController
             );
 
             $entityManager = $this->getDoctrine()->getManager();
+            $user->setUsername($user->getNickname());
             $entityManager->persist($user);
             $entityManager->flush();
 

@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,7 +31,7 @@ class RegistrationFormType extends AbstractType
             ->add('lastname', TextType::class, [
                 'label' => ' ',
             ])
-            ->add('username', TextType::class, [
+            ->add('nickname', TextType::class, [
                 'label' => " ",
             ])
             ->add('is_circus', ChoiceType::class, [
@@ -41,6 +42,9 @@ class RegistrationFormType extends AbstractType
                     'Non' => false,
                 ],
             ])
+            ->add('circus_name', TextType::class, [
+                'label' => ' ',
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'label' => "J'accepte les conditions d'utilisation du site",
@@ -50,9 +54,17 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les deux mots de passe doivent être identiques',
+                'first_name' => 'Choisissez_un_mot_de_passe',
+                'second_name' => 'Confirmez_le_mot_de_passe',
+                'options' => [
+                    'attr' => [
+                        'class' => 'password-field',
+                    ]
+                ],
+                'required' => true,
                 'mapped' => false,
                 'label' => ' ',
                 'constraints' => [
