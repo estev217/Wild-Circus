@@ -48,10 +48,9 @@
                         {{ app.user.region }}
                     </div>
                     <div class="text-center">
-                        <a href="{{ path('app_profile', {'user': app.user.id}) }}">
-                            <button class="mt-5 mb-2 btn btn-lg btn-outline-light">
+                        <a class="mt-5 mb-2 btn btn-lg btn-outline-light" href="{{ path('user_edit', {'id': app.user.id}) }}">
                                 Mettre à jour
-                            </button>
+                        </a>
                         </a>
                     </div>
                 </div>
@@ -64,7 +63,7 @@
                         {% if not wish.message %}
                             <div class="mx-2 my-2 px-4 py-2 d-flex flex-column justify-content-between text-center border">
                                 <div>
-                                    <h5>{{ wish.lesson.name }}</h5>
+                                    <h5 class="text-white">{{ wish.lesson.name }}</h5>
                                 </div>
                                 <div>
                                     <p>Nombre de participant(s)</p>
@@ -85,7 +84,7 @@
                         {% if wish.message %}
                             <div class="mx-2 my-2 px-4 py-2 d-flex flex-column justify-content-between text-center border">
                                 <div>
-                                    <h5>{{ wish.lesson.name }}</h5>
+                                    <h5 class="text-white">{{ wish.lesson.name }}</h5>
                                     <p>Pour {{ wish.number }} personne(s)</p>
                                 </div>
                                 <div>

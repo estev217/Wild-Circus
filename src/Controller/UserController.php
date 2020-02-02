@@ -7,6 +7,7 @@ use App\Form\UserType;
 use App\Repository\UserRepository;
 use App\Repository\WishRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -61,6 +62,9 @@ class UserController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param User $user
+     * @return Response
      */
     public function edit(Request $request, User $user): Response
     {
@@ -70,7 +74,15 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index');
+            if ($user->getIsCircus()) {
+            return new RedirectResponse($this->generateUrl('circus_profile', [
+                'user' => $user->getId(),
+            ]));
+            } else {
+                return new RedirectResponse($this->generateUrl('app_profile', [
+                    'user' => $user->getId(),
+                ]));
+            }
         }
 
         return $this->render('user/edit.html.twig', [
@@ -117,7 +129,7 @@ class UserController extends AbstractController
     {
 
         return $this->render('security/circus_profile.html.twig', [
-            'wishes' => $wishRepository->findBy(['user' => $user->getId()])
+            'wishes' => $wishRepository->findAll()
         ]);
     }
 }

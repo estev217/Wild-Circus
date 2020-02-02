@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-3"></div>
-            <form method="post" class="col-lg-6 col-sm-12 mt-5 d-flex flex-column justify-content-center profile-card">
+            <form method="post" class="col-lg-6 col-sm-12 mt-5 mb-5 d-flex flex-column justify-content-center profile-card">
 
                 <h1 class="mb-3 mt-3 font-weight-normal text-dark text-center">Détail de l'offre</h1>
                 <div class="text-white d-flex flex-column">
@@ -18,16 +18,22 @@
                         <p class="text-center text-dark mb-0">Nombre de participant(s)</p>
                         <p class="text-center mb-0">{{ wish.number }}</p>
                     </div>
-                    {% if wish.user.city %}
+                    {% if wish.city %}
                         <div class="text-center mt-1 mb-3">
                             <p class="text-center text-dark mb-0">Ville</p>
-                            <p class="text-center mb-0">{{ wish.user.city }}</p>
+                            <p class="text-center mb-0">{{ wish.city }}</p>
                         </div>
                     {% endif %}
-                    {% if wish.user.region %}
+                    {% if wish.department %}
                         <div class="text-center mt-1 mb-3">
-                            <p class="text-center text-dark mb-0">Région</p>
-                            <p class="text-center mb-0">{{ wish.user.region }}</p>
+                            <p class="text-center text-dark mb-0">Département</p>
+                            <p class="text-center mb-0">{{ wish.department }}</p>
+                        </div>
+                    {% endif %}
+                    {% if wish.location %}
+                        <div class="text-center mt-1 mb-3">
+                            <p class="text-center text-dark mb-0">Lieux exact</p>
+                            <p class="text-center mb-0">{{ wish.location }}</p>
                         </div>
                     {% endif %}
                         <div class="text-center mt-1 mb-3">
@@ -38,7 +44,11 @@
                             <p class="text-center text-dark mb-0">Message</p>
                             <p class="text-center mb-0">{{ wish.message }}</p>
                         </div>
-                    <a href="" class="text-center text-white mt-3 mb-3">Retour à mon profil</a>
+                    {% if app.user.isCircus %}
+                        <a href="{{ path('circus_profile', {'user': app.user.id}) }}" class="text-center btn btn-outline-light mt-3 mb-3">Retour à mon profil</a>
+                    {% else %}
+                        <a href="{{ path('app_profile', {'user': app.user.id}) }}" class="text-center btn btn-outline-light mt-3 mb-3">Retour à mon profil</a>
+                    {% endif %}
                     {{ include('wish/_delete_form.html.twig') }}
                 </div>
             </form>
