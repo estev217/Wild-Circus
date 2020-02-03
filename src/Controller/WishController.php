@@ -49,7 +49,9 @@ class WishController extends AbstractController
             $entityManager->persist($wish);
             $entityManager->flush();
 
-            return $this->redirectToRoute('wish_index');
+            return new RedirectResponse($this->generateUrl('app_profile', [
+                'user' => $wish->getUser()->getId(),
+            ]));
         }
 
         return $this->render('wish/new.html.twig', [
@@ -69,7 +71,10 @@ class WishController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="wish_edit", methods={"GET","POST"})
+     * @Route("/{wish}/edit", name="wish_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Wish $wish
+     * @return Response
      */
     public function edit(Request $request, Wish $wish): Response
     {
@@ -77,6 +82,7 @@ class WishController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('wish_index');

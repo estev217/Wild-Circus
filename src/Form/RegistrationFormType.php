@@ -43,6 +43,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('circus_name', TextType::class, [
+                'required' => false,
                 'label' => ' ',
             ])
             ->add('agreeTerms', CheckboxType::class, [

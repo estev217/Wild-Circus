@@ -1,9 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
+@import "vars";
 @import "home";
 @import "navbar";
 @import "section";
 @import "profile";
+@import "purpose";
 
 body {
-    background-color: #d04300;
+    background-color: $orange;
 }
+

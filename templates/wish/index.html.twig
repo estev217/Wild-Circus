@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container">
         <div class="row justify-content-center mt-5 mb-5">
-                <div class="profile-card">
+                <div class="profile-card px-2">
                     <div class="card-header text-center">
                         <h3>Liste des demandes des utilisateurs</h3>
                     </div>
@@ -27,7 +27,7 @@
                                     <td class="text-center align-middle">{{ wish.number }}</td>
                                     <td class="text-center align-middle">{{ wish.user.region ? wish.user.region : '' }}</td>
                                     <td  class="text-center align-middle">
-                                        <a href="{{ path('wish_edit', {'id': wish.id}) }}" title="Envoyer une offre">
+                                        <a href="{{ path('wish_edit', {'wish': wish.id}) }}" title="Envoyer une offre">
                                             <i class="fas fa-comments-dollar fa-2x"></i>
                                         </a>
                                     </td>

@@ -33,6 +33,9 @@ class MessageType extends AbstractType
             ->add('location', TextType::class, [
                 'label' => 'Lieu exact',
             ])
+            ->add('circus_name', TextType::class, [
+                'label' => 'Nom de votre Cirque'
+            ])
         ;
     }
 

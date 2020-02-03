@@ -1,0 +1,69 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "title title title title" "picture1 picture1 text1 text1" "picture1 picture1 text1 text1" "text2 text2 picture2 picture2" "text2 text2 picture2 picture2";
+}
+
+.picture1 { grid-area: picture1; }
+
+.picture2 { grid-area: picture2; }
+
+.text1 {
+  grid-area: text1;
+  text-align: start;
+  margin-left: 0;
+  font-size: 28px;
+}
+
+.text2 {
+  grid-area: text2;
+  text-align: end;
+  margin-left: 0;
+  font-size: 28px;
+}
+
+.title {
+  grid-area: title;
+  .goal{
+    font-size: 4rem;
+  }
+}
+
+b {
+  font-size: 3rem;
+}
+
+@media screen and (max-width: 991px) {
+  .picture1 {
+    display: none;
+  }
+  .picture2 {
+    display: none;
+  }
+  .title {
+    height: 60vh;
+    padding: auto;
+    .goal {
+      font-size: 3rem;
+    }
+  }
+  .text1 {
+    justify-content: start;
+  }
+  b {
+     font-size: 2rem;
+   }
+  .desktop {
+    display: none;
+  }
+  .text0 {
+    margin-top: 8vh;
+  }
+}
+
+@media screen and (min-width: 992px){
+  .mobile {
+    display: none;
+  }
+}
