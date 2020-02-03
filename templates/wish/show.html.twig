@@ -53,7 +53,9 @@
                     {% else %}
                         <a href="{{ path('app_profile', {'user': app.user.id}) }}" class="text-center btn btn-outline-light mt-3 mb-3">Retour à mon profil</a>
                     {% endif %}
+                    {% if not app.user.isCircus %}
                     {{ include('wish/_delete_form.html.twig') }}
+                    {% endif %}
                 </div>
             </form>
             <div class="col-3"></div>
